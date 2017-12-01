@@ -1,6 +1,6 @@
 from tkinter import *
 
-root= Tk()
+root = Tk()
 topFrame= Frame(root)
 
 topFrame.pack()
