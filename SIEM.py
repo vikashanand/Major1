@@ -9,10 +9,10 @@ class SIEM_Demo(tk.Tk):
 
         container.pack(side="top", fill="both", expand = True)
 
-        container.grid_rowconfigure(0, weight= 1)
-        container.grid_columnconfigure(0, weight=1)
+        #container.grid_rowconfigure(0, weight= 1)
+        #container.grid_columnconfigure(0, weight=1)
 
-        self.frames = {}
+        self.frame = {}
 
         frame= StartPage(container, self)
 
