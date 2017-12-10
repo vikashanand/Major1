@@ -2,10 +2,11 @@ import sys
 import pymysql
 import csv
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib as plt
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QGridLayout
+from matplotlib import figure
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 
@@ -44,6 +45,7 @@ class firewall():
         print(firewall_result)
         return firewall_result
 
+
 class App(QWidget):
     def __init__(self):
         super().__init__()
@@ -58,32 +60,27 @@ class App(QWidget):
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
 
-        #Create Grid Layout
-        grid= QGridLayout()
+        # Create Grid Layout
+        grid = QGridLayout()
         self.setLayout(grid)
 
 
-        figure=plt.figure()
-        canvas=FigureCanvas(figure)
-
-
-        #FireWall Buttons
-        buttonFirewall =QPushButton('Firewall',self)
-        buttonFirewall.clicked.connect(self.clickFirewall)  #functionality added to  button
+        # FireWall Buttons
+        buttonFirewall = QPushButton('Firewall', self)
+        buttonFirewall.clicked.connect(self.clickFirewall)  # functionality added to  button
         buttonFirewall.setToolTip('Press this button for starting the application')
-        #buttonFirewall.move(100,430)
-        grid.addWidget(buttonFirewall,2,0)
-        grid.addWidget(canvas)
+        # buttonFirewall.move(100,430)
+
+        grid.addWidget(buttonFirewall, 2, 0)
 
         self.show()
 
     def clickFirewall(self):
         print('*****Clicked Firewall button.*******')
-        demoObj=firewall()
-        dataFirewall=demoObj.firewall_analysis()
-        print("DataFrame : ",dataFirewall)
-        dataFirewall.plot()
-        self.canvas.draw()
+        demoObj = firewall()
+        dataFirewall = demoObj.firewall_analysis()
+        print("DataFrame : ", dataFirewall)
+
 
 
 if __name__ == '__main__':
